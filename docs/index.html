@@ -59,9 +59,14 @@
   <body>
     <app-root></app-root>
     <div id="amazon-root"></div>
+    <a id="Logout">Logout</a>
+    <script type="text/javascript">
+      document.getElementById("Logout").onclick = function () {
+        amazon.Login.logout();
+      };
+    </script>
     <script type="text/javascript">
       window.onAmazonLoginReady = function () {
-        debugger;
         amazon.Login.setClientId(
           "amzn1.application-oa2-client.7d1fab614479493aa3af49ecba48ef73"
         );
@@ -81,10 +86,11 @@
     <script type="text/javascript">
       document.getElementById("LoginWithAmazon").onclick = function () {
         options = {};
-        options.scope = "profile";
+        options.scope = "profile amazon_music:access";
         options.pkce = true;
         options.scope_data = {
           profile: { essential: false },
+          amazon_music: "access",
         };
         // amazon.Login.authorize(
         //   options,
@@ -101,6 +107,18 @@
               return;
             }
             console.log("Access Token: " + response.access_token);
+            amazon.Login.retrieveProfile(
+              response.access_token,
+              function (response) {
+                console.log("Hello, " + response.profile.Name);
+                console.log(
+                  "Your e-mail address is " + response.profile.PrimaryEmail
+                );
+                console.log("Your unique ID is " + response.profile.CustomerId);
+                if (window.console && window.console.log)
+                  window.console.log(response);
+              }
+            );
           });
         });
         return false;
