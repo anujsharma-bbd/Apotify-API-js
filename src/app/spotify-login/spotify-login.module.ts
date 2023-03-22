@@ -25,8 +25,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     HttpClientModule,
-    RouterModule.forRoot(routes,
-      { useHash: true }),
+    RouterModule.forRoot(routes),
     FormsModule
   ],
   exports: [
