@@ -3,105 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <title>Spotify API with Angular</title>
-    <base href="https://anujsharma-bbd.github.io/Spotify-API-js/" />
+    <!-- <base href="https://anujsharma-bbd.github.io/Spotify-API-js/" /> -->
+    <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
   </head>
   <body>
-    <script>
-      function Auth() {
-        var CLIENT_ID = "";
-        var REDIRECT_URI = "";
-
-        if (location.host == "localhost:4200") {
-          CLIENT_ID = "269f6c32fcd34a0bb588361cbc912afe";
-          REDIRECT_URI = "http://localhost:4200/";
-        } else {
-          CLIENT_ID = "fb9966f121c14ea991a187026a6262a2";
-          REDIRECT_URI = "https://anujsharma-bbd.github.io/Spotify-API-js/";
-        }
-
-        function getLoginURL(scopes) {
-          return (
-            "https://accounts.spotify.com/authorize?client_id=" +
-            CLIENT_ID +
-            "&redirect_uri=" +
-            encodeURIComponent(REDIRECT_URI) +
-            "&scope=" +
-            encodeURIComponent(scopes.join(" ")) +
-            "&response_type=token"
-          );
-        }
-
-        return {
-          openLogin: function () {
-            var url = getLoginURL([
-              "user-read-private",
-              "playlist-read-private",
-              "playlist-modify-public",
-              "playlist-modify-private",
-              "user-library-read",
-              "user-library-modify",
-              "user-follow-read",
-              "user-follow-modify",
-            ]);
-
-            var width = 450,
-              height = 730,
-              left = screen.width / 2 - width / 2,
-              top = screen.height / 2 - height / 2;
-
-            var w = window.open(
-              url,
-              "Spotify",
-              "menubar=no,location=no,resizable=no,scrollbars=no,status=no, width=" +
-                width +
-                ", height=" +
-                height +
-                ", top=" +
-                top +
-                ", left=" +
-                left
-            );
-          },
-          getAccessToken: function () {
-            var expires = 0 + localStorage.getItem("an_expires", "0");
-            if (new Date().getTime() > expires) {
-              return "";
-            }
-            var token = localStorage.getItem("an_token", "");
-            return token;
-          },
-          setAccessToken: function (token, expires_in) {
-            localStorage.setItem("an_token", token);
-            localStorage.setItem(
-              "an_expires",
-              new Date().getTime() + expires_in
-            );
-          },
-          getUsername: function () {
-            var username = localStorage.getItem("an_username", "");
-            return username;
-          },
-          setUsername: function (username) {
-            localStorage.setItem("an_username", username);
-          },
-          getUserCountry: function () {
-            var userCountry = localStorage.getItem("an_usercountry", "US");
-            return userCountry;
-          },
-          setUserCountry: function (userCountry) {
-            localStorage.setItem("an_usercountry", userCountry);
-          },
-        };
-      }
-      function LoginClick() {
-        new Auth().openLogin();
-      }
-    </script>
-    <button class="btn btn-secondary mb-3" onclick="LoginClick()">
-      Login Spotify
-    </button>
     <app-root></app-root>
   </body>
 </html>
