@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { SpotifyLoginModule } from './spotify-login/spotify-login.module';
 
 @NgModule({
   declarations: [
@@ -12,8 +12,8 @@ import { SpotifyLoginModule } from './spotify-login/spotify-login.module';
   imports: [
     BrowserModule,
     RouterModule.forRoot([]),
-    FormsModule,
-    SpotifyLoginModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -51,7 +51,7 @@ export class AppComponent implements OnInit {
       }
     }).subscribe((res: any) => {
       this.tracks = res?.tracks?.items || [];
-      if (this.tracks?.length) { 
+      if (this.tracks?.length) {
         this.currentIndex++;
         this.currentTrack = this.tracks[this.currentIndex];
         this.playNext();
