@@ -1,0 +1,4 @@
+<button class="btn btn-secondary mb-3" *ngIf="!isLoggedIn" (click)="LoginClick()">
+  Login Spotify
+</button>
+<app-spotify-playback *ngIf="isLoggedIn"></app-spotify-playback>
