@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
       .subscribe((event: any) => {
         console.log(event);
         if (event.url.includes('access_token')) {
-          const arr = event.url.replace(/\/\#access_token=/, '').replace(/\&token_type=/, 'anuj').replace(/\&expires_in=/, 'anuj').split('anuj');
+          const arr = event.url?.split('#')[1].replace(/access_token=/, '').replace(/\&token_type=/, 'anuj').replace(/\&expires_in=/, 'anuj').split('anuj');
           (new window.Auth()).setAccessToken(arr[0], arr[2]);
           window.close();
         }
