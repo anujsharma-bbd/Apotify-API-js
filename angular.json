@@ -51,7 +51,7 @@
                 }
               ],
               "outputHashing": "all",
-              "baseHref": "Spotify-API-js/"
+              "baseHref": "/Spotify-API-js/"
             },
             "development": {
               "buildOptimizer": false,
